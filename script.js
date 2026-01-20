@@ -28,10 +28,17 @@ const content = {
     }
 };
 
+const bubbleColors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#1abc9c'];
+
 bubbles.forEach(bubble => {
+    const size = Math.random() * 100 + 100; // Size between 100px and 200px
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.backgroundColor = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+
     // Initial random position
-    bubble.style.left = `${Math.random() * (window.innerWidth - 150)}px`;
-    bubble.style.top = `${Math.random() * (window.innerHeight - 150)}px`;
+    bubble.style.left = `${Math.random() * (window.innerWidth - size)}px`;
+    bubble.style.top = `${Math.random() * (window.innerHeight - size)}px`;
 
     let vx = (Math.random() - 0.5) * 4;
     let vy = (Math.random() - 0.5) * 4;
@@ -43,10 +50,10 @@ bubbles.forEach(bubble => {
         x += vx;
         y += vy;
 
-        if (x <= 0 || x >= window.innerWidth - 150) {
+        if (x <= 0 || x >= window.innerWidth - size) {
             vx *= -1;
         }
-        if (y <= 0 || y >= window.innerHeight - 150) {
+        if (y <= 0 || y >= window.innerHeight - size) {
             vy *= -1;
         }
 

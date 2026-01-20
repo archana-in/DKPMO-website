@@ -8,6 +8,10 @@ const downButton = document.getElementById('down');
 const leftButton = document.getElementById('left');
 const rightButton = document.getElementById('right');
 
+const gameOverModal = document.getElementById('game-over-modal');
+const finalScoreEl = document.getElementById('final-score');
+const restartButton = document.getElementById('restart-button');
+
 const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
 let food = {};
@@ -16,6 +20,7 @@ let score = 0;
 let highScore = localStorage.getItem('snakeHighScore') || 0;
 let changingDirection = false;
 let gameOver = false;
+let gameLoop = null;
 
 highScoreEl.textContent = highScore;
 
@@ -114,16 +119,18 @@ function keyboardHandler(event) {
 
 function endGame() {
     gameOver = true;
+    clearTimeout(gameLoop);
     if (score > highScore) {
         highScore = score;
         localStorage.setItem('snakeHighScore', highScore);
         highScoreEl.textContent = highScore;
     }
-    alert(`Game Over! Your score was ${score}. Press OK to restart.`);
-    resetGame();
+    finalScoreEl.textContent = score;
+    gameOverModal.style.display = 'flex';
 }
 
 function resetGame() {
+    gameOverModal.style.display = 'none';
     snake = [{ x: 10, y: 10 }];
     direction = 'right';
     score = 0;
@@ -135,7 +142,7 @@ function resetGame() {
 
 function main() {
     if (gameOver) return;
-    setTimeout(() => {
+    gameLoop = setTimeout(() => {
         update();
         draw();
         main();
@@ -147,6 +154,8 @@ upButton.addEventListener('click', () => handleDirectionChange('up'));
 downButton.addEventListener('click', () => handleDirectionChange('down'));
 leftButton.addEventListener('click', () => handleDirectionChange('left'));
 rightButton.addEventListener('click', () => handleDirectionChange('right'));
+restartButton.addEventListener('click', resetGame);
 
 generateFood();
 main();
+

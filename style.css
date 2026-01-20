@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    background-color: #f0f0f0;
+    background-color: #e0f7fa;
     font-family: sans-serif;
 }
 
@@ -26,6 +26,11 @@ body {
     user-select: none;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     font-size: 1.2em;
+    transition: transform 0.2s ease-in-out;
+}
+
+.bubble:hover {
+    transform: scale(1.1);
 }
 
 .modal {
