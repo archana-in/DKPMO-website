@@ -60,9 +60,13 @@ bubbles.forEach(bubble => {
 
     bubble.addEventListener('click', () => {
         const contentKey = bubble.getAttribute('data-content');
-        modalTitle.textContent = content[contentKey].title;
-        modalBody.textContent = content[contentKey].body;
-        modal.style.display = 'block';
+        if (contentKey === 'games') {
+            window.location.href = 'games.html';
+        } else {
+            modalTitle.textContent = content[contentKey].title;
+            modalBody.textContent = content[contentKey].body;
+            modal.style.display = 'block';
+        }
     });
 });
 
