@@ -3,6 +3,11 @@ const ctx = canvas.getContext('2d');
 const scoreEl = document.getElementById('score');
 const highScoreEl = document.getElementById('high-score');
 
+const upButton = document.getElementById('up');
+const downButton = document.getElementById('down');
+const leftButton = document.getElementById('left');
+const rightButton = document.getElementById('right');
+
 const gridSize = 20;
 let snake = [{ x: 10, y: 10 }];
 let food = {};
@@ -79,20 +84,32 @@ function update() {
     }
 }
 
-function changeDirection(event) {
+function handleDirectionChange(newDirection) {
     if (changingDirection) return;
     changingDirection = true;
 
-    const keyPressed = event.key;
     const goingUp = direction === 'up';
     const goingDown = direction === 'down';
     const goingLeft = direction === 'left';
     const goingRight = direction === 'right';
 
-    if (keyPressed === 'ArrowUp' && !goingDown) direction = 'up';
-    if (keyPressed === 'ArrowDown' && !goingUp) direction = 'down';
-    if (keyPressed === 'ArrowLeft' && !goingRight) direction = 'left';
-    if (keyPressed === 'ArrowRight' && !goingLeft) direction = 'right';
+    if (newDirection === 'up' && !goingDown) direction = 'up';
+    if (newDirection === 'down' && !goingUp) direction = 'down';
+    if (newDirection === 'left' && !goingRight) direction = 'left';
+    if (newDirection === 'right' && !goingLeft) direction = 'right';
+}
+
+function keyboardHandler(event) {
+    const keyMap = {
+        'ArrowUp': 'up',
+        'ArrowDown': 'down',
+        'ArrowLeft': 'left',
+        'ArrowRight': 'right'
+    };
+    const newDirection = keyMap[event.key];
+    if (newDirection) {
+        handleDirectionChange(newDirection);
+    }
 }
 
 function endGame() {
@@ -122,9 +139,14 @@ function main() {
         update();
         draw();
         main();
-    }, 100);
+    }, 150);
 }
 
-document.addEventListener('keydown', changeDirection);
+document.addEventListener('keydown', keyboardHandler);
+upButton.addEventListener('click', () => handleDirectionChange('up'));
+downButton.addEventListener('click', () => handleDirectionChange('down'));
+leftButton.addEventListener('click', () => handleDirectionChange('left'));
+rightButton.addEventListener('click', () => handleDirectionChange('right'));
+
 generateFood();
 main();
