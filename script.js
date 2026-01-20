@@ -30,11 +30,17 @@ const content = {
 
 const bubbleColors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#1abc9c'];
 
-bubbles.forEach(bubble => {
+// Shuffle colors to ensure variety
+for (let i = bubbleColors.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [bubbleColors[i], bubbleColors[j]] = [bubbleColors[j], bubbleColors[i]];
+}
+
+bubbles.forEach((bubble, index) => {
     const size = Math.random() * 100 + 100; // Size between 100px and 200px
     bubble.style.width = `${size}px`;
     bubble.style.height = `${size}px`;
-    bubble.style.backgroundColor = bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+    bubble.style.backgroundColor = bubbleColors[index % bubbleColors.length];
 
     // Initial random position
     bubble.style.left = `${Math.random() * (window.innerWidth - size)}px`;
