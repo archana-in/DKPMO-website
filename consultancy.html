@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DKPMO - Consultancy</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         /* Specific override to center specific bubbles if needed, or just let random logic handle it */
     </style>
 </head>
 <body>
-    <a href="../index.html" style="position: absolute; top: 20px; right: 20px; font-size: 1.5em; text-decoration: none; color: #333; z-index: 10;">Home</a>
+    <a href="index.html" style="position: absolute; top: 20px; right: 20px; font-size: 1.5em; text-decoration: none; color: #333; z-index: 10;">Home</a>
     
     <div id="bubble-container">
         <div class="bubble" data-content="law">Law</div>
@@ -52,7 +52,7 @@
             bubble.addEventListener('click', () => {
                 const type = bubble.getAttribute('data-content');
                 if (type === 'law') {
-                    window.location.href = 'law/index.html';
+                    window.location.href = 'consultancy/law/index.html';
                 } else {
                     alert('Mining consultancy coming soon!');
                 }
