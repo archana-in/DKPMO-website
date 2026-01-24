@@ -66,11 +66,7 @@ bubbles.forEach((bubble, index) => {
         const contentKey = bubble.getAttribute('data-content');
         console.log('Bubble clicked:', contentKey); // Debugging
         
-        if (contentKey === 'games') {
-             window.location.href = 'games.html';
-        } else if (contentKey === 'consultancy') {
-             window.location.href = './consultancy/index.html';
-        } else if (contentKey && content[contentKey] && modal) {
+        if (contentKey && content[contentKey] && modal) {
              modalTitle.textContent = content[contentKey].title;
              modalBody.textContent = content[contentKey].body;
              modal.style.display = 'block';
