@@ -5,10 +5,6 @@ const modalTitle = document.getElementById('modal-title');
 const modalBody = document.getElementById('modal-body');
 
 const content = {
-    consultancy: {
-        title: 'Consultancy',
-        body: 'This is the consultancy page. We offer expert advice in various fields.'
-    },
     'online-services': {
         title: 'Online Services',
         body: 'Explore our wide range of online services designed to help your business grow.'
@@ -68,10 +64,12 @@ bubbles.forEach((bubble, index) => {
 
     bubble.addEventListener('click', (e) => {
         const contentKey = bubble.getAttribute('data-content');
+        console.log('Bubble clicked:', contentKey); // Debugging
+        
         if (contentKey === 'games') {
              window.location.href = 'games.html';
         } else if (contentKey === 'consultancy') {
-             window.location.href = 'consultancy/index.html';
+             window.location.href = './consultancy/index.html';
         } else if (contentKey && content[contentKey] && modal) {
              modalTitle.textContent = content[contentKey].title;
              modalBody.textContent = content[contentKey].body;
