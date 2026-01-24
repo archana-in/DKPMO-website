@@ -1,0 +1,120 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* Landing (Bubbles) */
+#landing-view {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #e0f7fa;
+    overflow: hidden;
+}
+
+.law-bubble {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    transition: transform 0.2s;
+    user-select: none;
+}
+.law-bubble:hover { transform: scale(1.05); }
+
+/* Forms & Dashboards (Hidden by default) */
+.view-section {
+    display: none;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.active-view {
+    display: block;
+}
+
+h2 { border-bottom: 2px solid #3498db; padding-bottom: 10px; color: #2c3e50; }
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+input, textarea, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;}
+button.btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+button.btn:hover { background-color: #2980b9; }
+button.btn-danger { background-color: #e74c3c; }
+button.btn-success { background-color: #2ecc71; }
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.status-Submitted { background-color: #f39c12; }
+.status-Reviewed { background-color: #3498db; }
+.status-Processing { background-color: #2ecc71; }
+.status-Closed { background-color: #7f8c8d; }
+
+.message-box {
+    border: 1px solid #eee;
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background: #fafafa;
+}
+.msg { margin-bottom: 8px; padding: 8px; border-radius: 5px; }
+.msg.user { background-color: #d1ecf1; text-align: right; margin-left: 20%; }
+.msg.lawyer { background-color: #e2e3e5; text-align: left; margin-right: 20%; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+th { background-color: #f2f2f2; }
+
+/* Navigation in Dashboard */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #34495e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+.nav-bar a { color: white; text-decoration: none; margin-left: 15px; cursor: pointer;}
+
+#back-home {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+}

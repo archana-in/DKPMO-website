@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DKPMO - Consultancy</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* Specific override to center specific bubbles if needed, or just let random logic handle it */
+    </style>
+</head>
+<body>
+    <a href="../../index.html" style="position: absolute; top: 20px; right: 20px; font-size: 1.5em; text-decoration: none; color: #333; z-index: 10;">Home</a>
+    
+    <div id="bubble-container">
+        <div class="bubble" data-content="law">Law</div>
+        <div class="bubble" data-content="mining">Mining</div>
+    </div>
+
+    <script>
+        // Simple script to handle these specific bubbles
+        const bubbles = document.querySelectorAll('.bubble');
+        const bubbleColors = ['#e67e22', '#8e44ad']; // Orange for Law, Purple for Mining
+
+        bubbles.forEach((bubble, index) => {
+            const size = 150;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.backgroundColor = bubbleColors[index % bubbleColors.length];
+            bubble.style.left = `${Math.random() * (window.innerWidth - size)}px`;
+            bubble.style.top = `${Math.random() * (window.innerHeight - size)}px`;
+
+            let vx = (Math.random() - 0.5) * 4;
+            let vy = (Math.random() - 0.5) * 4;
+
+            function animate() {
+                let x = parseFloat(bubble.style.left);
+                let y = parseFloat(bubble.style.top);
+
+                x += vx;
+                y += vy;
+
+                if (x <= 0 || x >= window.innerWidth - size) vx *= -1;
+                if (y <= 0 || y >= window.innerHeight - size) vy *= -1;
+
+                bubble.style.left = `${x}px`;
+                bubble.style.top = `${y}px`;
+                requestAnimationFrame(animate);
+            }
+            animate();
+
+            bubble.addEventListener('click', () => {
+                const type = bubble.getAttribute('data-content');
+                if (type === 'law') {
+                    window.location.href = 'law/index.html';
+                } else {
+                    alert('Mining consultancy coming soon!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

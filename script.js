@@ -69,12 +69,9 @@ bubbles.forEach((bubble, index) => {
     bubble.addEventListener('click', (e) => {
         const contentKey = bubble.getAttribute('data-content');
         if (contentKey === 'games') {
-             // Prevent default if it's a link, but here we want the link to work if it's an anchor.
-             // However, the original code had window.location.href.
-             // If the bubble is an <a> tag (like in games.html), we don't need to do anything,
-             // the browser handles it.
-             // If it is a div (like in index.html), we handle navigation.
              window.location.href = 'games.html';
+        } else if (contentKey === 'consultancy') {
+             window.location.href = 'consultancy/index.html';
         } else if (contentKey && content[contentKey] && modal) {
              modalTitle.textContent = content[contentKey].title;
              modalBody.textContent = content[contentKey].body;
