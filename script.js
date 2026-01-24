@@ -1,4 +1,3 @@
-const bubbleContainer = document.getElementById('bubble-container');
 const bubbles = document.querySelectorAll('.bubble');
 const modal = document.getElementById('modal');
 const closeModal = document.querySelector('.close-button');
@@ -13,10 +12,6 @@ const content = {
     'online-services': {
         title: 'Online Services',
         body: 'Explore our wide range of online services designed to help your business grow.'
-    },
-    games: {
-        title: 'Games',
-        body: 'Check out our fun and interactive games.'
     },
     about: {
         title: 'About Us',
@@ -71,24 +66,33 @@ bubbles.forEach((bubble, index) => {
 
     animate();
 
-    bubble.addEventListener('click', () => {
+    bubble.addEventListener('click', (e) => {
         const contentKey = bubble.getAttribute('data-content');
         if (contentKey === 'games') {
-            window.location.href = 'games.html';
-        } else {
-            modalTitle.textContent = content[contentKey].title;
-            modalBody.textContent = content[contentKey].body;
-            modal.style.display = 'block';
+             // Prevent default if it's a link, but here we want the link to work if it's an anchor.
+             // However, the original code had window.location.href.
+             // If the bubble is an <a> tag (like in games.html), we don't need to do anything,
+             // the browser handles it.
+             // If it is a div (like in index.html), we handle navigation.
+             window.location.href = 'games.html';
+        } else if (contentKey && content[contentKey] && modal) {
+             modalTitle.textContent = content[contentKey].title;
+             modalBody.textContent = content[contentKey].body;
+             modal.style.display = 'block';
         }
     });
 });
 
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-window.addEventListener('click', (event) => {
-    if (event.target == modal) {
+if (closeModal && modal) {
+    closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
-    }
-});
+    });
+}
+
+if (modal) {
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
