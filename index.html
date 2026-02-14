@@ -229,7 +229,7 @@
 
             // 2. If it was NOT active before, make it active now (Toggle ON)
             if (!isActive) {
-                description.innerHTML = 'Send mail to <a href="mailto:contact@dkpmo.com" class="text-dk-accent hover:underline font-bold" onclick="event.stopPropagation()">contact@dkpmo.com</a>';
+                description.innerHTML = '<a href="mailto:contact@dkpmo.com" class="text-dk-accent hover:underline font-bold" onclick="event.stopPropagation()">contact@dkpmo.com</a>';
                 description.classList.add('text-lg', 'mt-4');
                 element.setAttribute('data-active', 'true');
             }
