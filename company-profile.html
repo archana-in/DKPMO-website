@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DKPMO Strategy Consultants LLP | Company Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dk: {
+                            900: '#0a0a0a', // Deep black
+                            800: '#171717', // Dark gray
+                            700: '#262626', // Lighter gray
+                            accent: '#3b82f6', // Blue accent
+                            gold: '#fbbf24' // Subtle gold for premium feel
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,700;1,300&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Merriweather', serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-dk-900 text-gray-200 antialiased selection:bg-dk-accent selection:text-white">
+
+    <!-- Navigation (Simple) -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-b-dk-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-xl font-bold tracking-wider text-white">DKPMO<span class="text-dk-accent">.</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#portfolio" class="hover:text-dk-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Portfolio</a>
+                        <a href="#tech" class="hover:text-dk-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Technology</a>
+                        <a href="#vision" class="hover:text-dk-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Vision</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-dk-accent rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+            <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <p class="text-dk-accent font-semibold tracking-widest uppercase mb-4 text-sm">Strategy Consultants LLP</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Bridging Industrial Logic with <br class="hidden md:block" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Digital Infrastructure.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light">
+                Orchestrating the convergence of traditional engineering rigor and next-generation technology.
+            </p>
+            <div class="mt-10">
+                <a href="#portfolio" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-sm text-dk-900 bg-white hover:bg-gray-100 transition-all duration-300 shadow-lg shadow-blue-500/20">
+                    Explore Our Logic
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRINITY PORTFOLIO Section -->
+    <section id="portfolio" class="py-24 bg-dk-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white sm:text-4xl">The Trinity Portfolio</h2>
+                <p class="mt-4 text-gray-400">Our core pillars of operational excellence.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div onclick="toggleEmail(this)" class="cursor-pointer group relative bg-dk-800 p-6 rounded-xl border border-dk-700 hover:border-dk-accent transition-all duration-300 block">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-dk-900 border border-dk-700 p-3 rounded-full group-hover:border-dk-accent transition-colors">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    </div>
+                    <h3 class="mt-8 text-xl font-bold text-white text-center mb-2">Strategic PMO & Governance</h3>
+                    <p class="text-gray-400 text-center text-sm leading-relaxed transition-all duration-300">
+                        Executing large-scale transformation with precision. Leveraging methodologies from mature organizations for robust project controls and governance.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div onclick="toggleEmail(this)" class="cursor-pointer group relative bg-dk-800 p-6 rounded-xl border border-dk-700 hover:border-emerald-500 transition-all duration-300 block">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-dk-900 border border-dk-700 p-3 rounded-full group-hover:border-emerald-500 transition-colors">
+                        <svg class="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    </div>
+                    <h3 class="mt-8 text-xl font-bold text-white text-center mb-2">Technical Compliance</h3>
+                    <p class="text-gray-400 text-center text-sm leading-relaxed transition-all duration-300">
+                        Navigating complex regulatory landscapes. Specialized in Auditing Frameworks to ensure uncompromised adherence to standards.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div onclick="toggleEmail(this)" class="cursor-pointer group relative bg-dk-800 p-6 rounded-xl border border-dk-700 hover:border-purple-500 transition-all duration-300 block">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-dk-900 border border-dk-700 p-3 rounded-full group-hover:border-purple-500 transition-colors">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="mt-8 text-xl font-bold text-white text-center mb-2">Sustainability & AI</h3>
+                    <p class="text-gray-400 text-center text-sm leading-relaxed transition-all duration-300">
+                        "The Seed to Roadmap Framework." Integrating Artificial Intelligence to drive sustainable innovation and future-proof operations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK Section -->
+    <section id="tech" class="py-20 border-t border-dk-800 bg-gradient-to-b from-dk-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-gray-400 uppercase tracking-widest text-center mb-12">Utility Tools Powered By</h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <!-- Tech Item -->
+                <div class="flex flex-col items-center group">
+                    <div class="h-16 w-16 bg-dk-800 rounded-lg flex items-center justify-center border border-dk-700 group-hover:border-green-500 transition-all shadow-lg group-hover:shadow-green-900/20">
+                        <span class="font-mono text-green-500 font-bold text-xl">Nd</span>
+                    </div>
+                    <span class="mt-3 text-sm text-gray-500 group-hover:text-gray-300 transition-colors">Node.js</span>
+                </div>
+
+                <!-- Tech Item -->
+                <div class="flex flex-col items-center group">
+                    <div class="h-16 w-16 bg-dk-800 rounded-lg flex items-center justify-center border border-dk-700 group-hover:border-blue-500 transition-all shadow-lg group-hover:shadow-blue-900/20">
+                        <svg class="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor"><path d="M13.03 2.56c-.4-.56-1.66-.56-2.06 0L4.5 12.96a.8.8 0 00.65 1.25h4.17V22l8.8-12.2c.42-.58-.12-1.37-.82-1.37h-3.32l-.95-5.87z"/></svg>
+                    </div>
+                    <span class="mt-3 text-sm text-gray-500 group-hover:text-gray-300 transition-colors">Azure</span>
+                </div>
+
+                <!-- Tech Item -->
+                <div class="flex flex-col items-center group">
+                    <div class="h-16 w-16 bg-dk-800 rounded-lg flex items-center justify-center border border-dk-700 group-hover:border-purple-500 transition-all shadow-lg group-hover:shadow-purple-900/20">
+                         <svg class="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <span class="mt-3 text-sm text-gray-500 group-hover:text-gray-300 transition-colors">Agentic AI</span>
+                </div>
+
+                <!-- Tech Item -->
+                <div class="flex flex-col items-center group">
+                    <div class="h-16 w-16 bg-dk-800 rounded-lg flex items-center justify-center border border-dk-700 group-hover:border-gold transition-all shadow-lg group-hover:shadow-yellow-900/20">
+                        <svg class="w-8 h-8 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                    </div>
+                    <span class="mt-3 text-sm text-gray-500 group-hover:text-gray-300 transition-colors">Encrypted JSON</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION Section -->
+    <section id="vision" class="relative py-24 bg-black overflow-hidden">
+         <div class="absolute inset-0 z-0">
+             <div class="absolute w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-dk-800 via-black to-black opacity-50"></div>
+         </div>
+         
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-serif font-light text-white leading-relaxed mb-8">
+                "Architecting a future where <span class="italic text-dk-accent">innovation</span> and <span class="italic text-emerald-500">sustainability</span> coexist in harmony."
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-dk-accent to-emerald-500 mx-auto rounded-full"></div>
+            <p class="mt-8 text-gray-500">© 2026 DKPMO Strategy Consultants LLP. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // If the link is for portfolio, reset the pillars
+                if (this.getAttribute('href') === '#portfolio') {
+                    resetPillars();
+                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Store original texts to avoid data loss
+        const originalTexts = new Map();
+
+        function resetPillars() {
+            document.querySelectorAll('[onclick="toggleEmail(this)"]').forEach(el => {
+                if (originalTexts.has(el)) {
+                    const desc = el.querySelector('p');
+                    desc.innerHTML = originalTexts.get(el);
+                    desc.classList.remove('text-lg', 'mt-4'); // Remove styling added for email
+                    el.setAttribute('data-active', 'false');
+                }
+            });
+        }
+
+        function toggleEmail(element) {
+            // Identify the unique index of this pillar (assuming 3 pillars) or use the element itself as key
+            if (!originalTexts.has(element)) {
+                const description = element.querySelector('p');
+                originalTexts.set(element, description.innerHTML);
+            }
+
+            const description = element.querySelector('p');
+            const isActive = element.getAttribute('data-active') === 'true';
+
+            // 1. Reset ALL pillars first
+            resetPillars();
+
+            // 2. If it was NOT active before, make it active now (Toggle ON)
+            if (!isActive) {
+                description.innerHTML = 'Send mail to <a href="mailto:contact@dkpmo.com" class="text-dk-accent hover:underline font-bold" onclick="event.stopPropagation()">contact@dkpmo.com</a>';
+                description.classList.add('text-lg', 'mt-4');
+                element.setAttribute('data-active', 'true');
+            }
+        }
+
+        // Reset pillars on scroll
+        window.addEventListener('scroll', () => {
+            resetPillars();
+        }, { passive: true });
+    </script>
+</body>
+</html>

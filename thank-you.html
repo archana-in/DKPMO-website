@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | DKPMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dk: {
+                            900: '#0a0a0a',
+                            accent: '#3b82f6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dk-900 text-white flex items-center justify-center h-screen font-sans">
+    <div class="text-center p-8 bg-white/5 rounded-xl border border-white/10 backdrop-blur-md max-w-md mx-4">
+        <div class="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h1 class="text-2xl font-bold mb-4">Message Sent</h1>
+        <p class="text-gray-400 mb-8">Thank you for contacting DKPMO. We have received your inquiry and will respond shortly.</p>
+        <a href="company-profile.html" class="inline-block px-6 py-3 bg-dk-accent hover:bg-blue-600 rounded-md text-white font-medium transition-colors">Return to Home</a>
+    </div>
+</body>
+</html>
