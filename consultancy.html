@@ -3,61 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DKPMO - Consultancy</title>
+    <title>Strategic Advisory Tiers | DKPMO</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <style>
-        /* Specific override to center specific bubbles if needed, or just let random logic handle it */
+        .consultancy-section {
+            padding: 120px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .tier-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .tier-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .tier-label {
+            font-family: monospace;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .tier-card h3 {
+            font-size: 1.8rem;
+            margin: 0 0 25px 0;
+        }
+        .tier-details {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+        .tier-details li {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .tier-details li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+        .sub-tier {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        .sub-tier h4 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cta-container {
+            text-align: center;
+            padding: 60px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .back-link:hover {
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" style="position: absolute; top: 20px; right: 20px; font-size: 1.5em; text-decoration: none; color: #333; z-index: 10;">Home</a>
-    
-    <div id="bubble-container">
-        <div class="bubble" data-content="law">Law</div>
-        <div class="bubble" data-content="mining">Mining</div>
-    </div>
+    <nav class="navbar">
+        <div class="logo">DKPMO</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+        </div>
+    </nav>
 
-    <script>
-        // Simple script to handle these specific bubbles
-        const bubbles = document.querySelectorAll('.bubble');
-        const bubbleColors = ['#e67e22', '#8e44ad']; // Orange for Law, Purple for Mining
+    <main class="consultancy-section">
+        <div class="section-header">
+            <h2>Strategic Advisory Tiers</h2>
+            <p>Tailored consultancy frameworks designed to optimize legal workflows and manage high-stakes industrial projects with precision.</p>
+        </div>
 
-        bubbles.forEach((bubble, index) => {
-            const size = 150;
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
-            bubble.style.backgroundColor = bubbleColors[index % bubbleColors.length];
-            bubble.style.left = `${Math.random() * (window.innerWidth - size)}px`;
-            bubble.style.top = `${Math.random() * (window.innerHeight - size)}px`;
+        <div class="tier-grid">
+            <!-- Law Tier -->
+            <div class="tier-card">
+                <h3>Law (Level 1) Consultancy</h3>
+                <ul class="tier-details">
+                    <li>Preliminary legal scoping and risk assessment.</li>
+                    <li>Advanced digital document security protocols.</li>
+                    <li>Automated client-lawyer workflow integration.</li>
+                    <li>Preliminary regulatory landscape mapping.</li>
+                </ul>
+            </div>
 
-            let vx = (Math.random() - 0.5) * 4;
-            let vy = (Math.random() - 0.5) * 4;
+            <!-- Project Management Tier -->
+            <div class="tier-card">
+                <div class="tier-label">Infrastructure</div>
+                <h3>Project Management</h3>
+                
+                <div class="sub-tier">
+                    <h4>Level 1: Fundamentals</h4>
+                    <ul class="tier-details">
+                        <li>Standardized project scheduling and milestone tracking.</li>
+                        <li>Basic PMO (Project Management Office) setup.</li>
+                        <li>Stakeholder communication frameworks.</li>
+                    </ul>
+                </div>
 
-            function animate() {
-                let x = parseFloat(bubble.style.left);
-                let y = parseFloat(bubble.style.top);
+                <div class="sub-tier">
+                    <h4>Level 2: Advanced Strategy</h4>
+                    <ul class="tier-details">
+                        <li>Advanced risk mitigation and contingency planning.</li>
+                        <li>Resource optimization using digital infrastructure.</li>
+                        <li>End-to-end tech-integration strategy.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-                x += vx;
-                y += vy;
+        <div class="cta-container">
+            <h3>Enterprise Solutions</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Customized advisory frameworks for multinational industrial groups.</p>
+            <a href="mailto:advisory@dkpmo.com" class="cta-button">Consult with an Expert</a>
+        </div>
 
-                if (x <= 0 || x >= window.innerWidth - size) vx *= -1;
-                if (y <= 0 || y >= window.innerHeight - size) vy *= -1;
+        <a href="index.html" class="back-link">&larr; Return to Home</a>
+    </main>
 
-                bubble.style.left = `${x}px`;
-                bubble.style.top = `${y}px`;
-                requestAnimationFrame(animate);
-            }
-            animate();
-
-            bubble.addEventListener('click', () => {
-                const type = bubble.getAttribute('data-content');
-                if (type === 'law') {
-                    window.location.href = 'consultancy/law/index.html';
-                } else {
-                    alert('Mining consultancy coming soon!');
-                }
-            });
-        });
-    </script>
+    <footer>
+        <p>&copy; 2026 DKPMO Strategy Consultants LLP. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
