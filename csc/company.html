@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Admin | DKPMO CSC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dk: {
+                            900: '#0a0a0a',
+                            800: '#171717',
+                            700: '#262626',
+                            accent: '#3b82f6',
+                            purple: '#a855f7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                        logo: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,700;1,300&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-dk-900 text-gray-200 antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="w-full z-50 glass-panel border-b border-dk-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-xl font-bold tracking-wider text-white font-logo">DKPMO<span class="text-purple-500">.</span> COMPANY</a>
+                </div>
+                 <div class="hidden md:flex space-x-4">
+                    <button onclick="switchTab('ordersTab')" id="btn-ordersTab" class="text-purple-400 font-bold px-3 py-2 text-sm">Orders Hub</button>
+                    <button onclick="switchTab('customersTab')" id="btn-customersTab" class="text-gray-400 hover:text-white px-3 py-2 text-sm">Customers DB</button>
+                    <button onclick="switchTab('suppliersTab')" id="btn-suppliersTab" class="text-gray-400 hover:text-white px-3 py-2 text-sm">Suppliers DB</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation (Simple) -->
+    <div class="md:hidden glass-panel border-b border-dk-700/50 flex justify-center space-x-2 py-2">
+        <button onclick="switchTab('ordersTab')" id="btn-m-ordersTab" class="text-purple-400 font-bold px-3 py-1 text-xs">Orders</button>
+        <button onclick="switchTab('customersTab')" id="btn-m-customersTab" class="text-gray-400 px-3 py-1 text-xs">Customers</button>
+        <button onclick="switchTab('suppliersTab')" id="btn-m-suppliersTab" class="text-gray-400 px-3 py-1 text-xs">Suppliers</button>
+    </div>
+
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Stats Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="glass-panel p-6 rounded-xl border border-dk-700">
+                <p class="text-sm font-medium text-gray-400">Total Pending Orders</p>
+                <p id="statPending" class="mt-2 text-3xl font-bold text-white">0</p>
+            </div>
+            <div class="glass-panel p-6 rounded-xl border border-dk-700">
+                <p class="text-sm font-medium text-gray-400">Registered Customers</p>
+                <p id="statCustomers" class="mt-2 text-3xl font-bold text-white">0</p>
+            </div>
+            <div class="glass-panel p-6 rounded-xl border border-dk-700">
+                <p class="text-sm font-medium text-gray-400">Registered Suppliers</p>
+                <p id="statSuppliers" class="mt-2 text-3xl font-bold text-white">0</p>
+            </div>
+        </div>
+
+        <!-- Orders Hub Tab -->
+        <div id="ordersTab" class="tab-content">
+            <h2 class="text-2xl font-bold text-white mb-6">Orders Hub</h2>
+            <div class="glass-panel rounded-xl overflow-x-auto">
+                <table class="min-w-full divide-y divide-dk-700">
+                    <thead class="bg-dk-800/50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">ID / Date</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Customer</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Details</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Status</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Action / Assignment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrdersList" class="divide-y divide-dk-700 bg-transparent">
+                        <!-- Orders populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Customers DB Tab -->
+        <div id="customersTab" class="tab-content hidden">
+            <h2 class="text-2xl font-bold text-white mb-6">Customers Database</h2>
+             <div class="glass-panel rounded-xl overflow-x-auto">
+                <table class="min-w-full divide-y divide-dk-700">
+                    <thead class="bg-dk-800/50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">ID</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminCustomersList" class="divide-y divide-dk-700 bg-transparent">
+                        <!-- Customers populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Suppliers DB Tab -->
+        <div id="suppliersTab" class="tab-content hidden">
+            <h2 class="text-2xl font-bold text-white mb-6">Suppliers Database</h2>
+             <div class="glass-panel rounded-xl overflow-x-auto">
+                <table class="min-w-full divide-y divide-dk-700">
+                    <thead class="bg-dk-800/50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">ID</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminSuppliersList" class="divide-y divide-dk-700 bg-transparent">
+                        <!-- Suppliers populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Reset button styles
+            document.querySelectorAll('[id^="btn-"]').forEach(el => {
+                el.classList.remove('text-purple-400', 'font-bold');
+                el.classList.add('text-gray-400');
+            });
+
+            // Show selected tab
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            // Highlight buttons
+            const desktopBtn = document.getElementById('btn-' + tabId);
+            const mobileBtn = document.getElementById('btn-m-' + tabId);
+            
+            if(desktopBtn) {
+                desktopBtn.classList.remove('text-gray-400');
+                desktopBtn.classList.add('text-purple-400', 'font-bold');
+            }
+            if(mobileBtn) {
+                mobileBtn.classList.remove('text-gray-400');
+                mobileBtn.classList.add('text-purple-400', 'font-bold');
+            }
+
+            loadData(); // Refresh data on tab switch
+        }
+
+        // Make functions globally available for inline onclick attributes
+        window.switchTab = switchTab;
+
+        function loadData() {
+            const orders = getAllOrders();
+            const customers = getAllCustomers();
+            const suppliers = getAllSuppliers();
+
+            // Update Stats
+            document.getElementById('statPending').textContent = orders.filter(o => o.status === 'Pending Assignment').length;
+            document.getElementById('statCustomers').textContent = customers.length;
+            document.getElementById('statSuppliers').textContent = suppliers.length;
+
+            // Load Orders Hub
+            const ordersList = document.getElementById('adminOrdersList');
+            ordersList.innerHTML = '';
+            
+            // Sort newest first
+            let sortedOrders = [...orders].sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            sortedOrders.forEach(order => {
+                const customer = getCustomer(order.customerId);
+                const custName = customer ? customer.name : 'Unknown';
+                
+                let statusColor = 'text-gray-400';
+                if(order.status === 'Assigned') statusColor = 'text-yellow-400';
+                if(order.status === 'Accepted') statusColor = 'text-blue-400';
+                if(order.status === 'Completed') statusColor = 'text-emerald-400';
+                if(order.status === 'Rejected') statusColor = 'text-red-400';
+
+                let actionHtml = '';
+
+                if (order.status === 'Pending Assignment' || order.status === 'Rejected') {
+                    // Create dropdown of available suppliers
+                    let options = '<option value="">-- Select Supplier --</option>';
+                    suppliers.forEach(s => {
+                        options += `<option value="${s.id}">${s.name}</option>`;
+                    });
+
+                    actionHtml = `
+                        <div class="flex items-center space-x-2">
+                            <select id="assign-${order.id}" class="block w-full text-xs bg-dk-800 border border-dk-700 rounded-md shadow-sm py-1 px-2 text-white focus:outline-none focus:ring-purple-500 focus:border-purple-500">
+                                ${options}
+                            </select>
+                            <button onclick="handleAssign('${order.id}')" class="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded text-white bg-purple-600 hover:bg-purple-500">Assign</button>
+                        </div>
+                    `;
+                } else {
+                    const assignedSupplier = getSupplier(order.supplierId);
+                    actionHtml = `<span class="text-sm text-gray-400">Assigned to: ${assignedSupplier ? assignedSupplier.name : 'Unknown'}</span>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-white">${order.id}</div>
+                        <div class="text-xs text-gray-500">${new Date(order.timestamp).toLocaleDateString()}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-300">${custName}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-300 max-w-xs truncate" title="${order.details}">${order.details}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-dk-800 border border-dk-700 ${statusColor}">
+                            ${order.status}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                        ${actionHtml}
+                    </td>
+                `;
+                ordersList.appendChild(tr);
+            });
+
+            // Load Customers DB
+            const customersList = document.getElementById('adminCustomersList');
+            customersList.innerHTML = '';
+            customers.forEach(c => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400 font-mono">${c.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-white">${c.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${c.email}</td>
+                `;
+                customersList.appendChild(tr);
+            });
+
+            // Load Suppliers DB
+            const suppliersList = document.getElementById('adminSuppliersList');
+            suppliersList.innerHTML = '';
+            suppliers.forEach(s => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400 font-mono">${s.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-white">${s.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${s.email}</td>
+                `;
+                suppliersList.appendChild(tr);
+            });
+        }
+
+        window.handleAssign = function(orderId) {
+            const selectEl = document.getElementById(`assign-${orderId}`);
+            const supplierId = selectEl.value;
+            if(supplierId) {
+                assignOrderToSupplier(orderId, supplierId);
+                loadData(); // refresh UI
+            } else {
+                alert('Please select a supplier first.');
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+        });
+
+    </script>
+</body>
+</html>
